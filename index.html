@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0c4d87">
+  <meta name="description" content="Patrik Darlan Ribeiro — consultoria, docência e conteúdo aplicado para transformar conhecimento em prática.">
+  <meta name="glean-artifact-type" content="web_design">
+  <title>Patrik Darlan Ribeiro | Estratégia, educação e prática</title>
+  <style>
+:root {
+  --artifact-bg: #f4f7fb;
+  --artifact-surface: #ffffff;
+  --artifact-surface-soft: #eaf0f7;
+  --artifact-ink: #142337;
+  --artifact-muted: #5d6b7e;
+  --artifact-line: #dce5ef;
+  --artifact-blue: #0c4d87;
+  --artifact-blue-strong: #073762;
+  --artifact-red: #c23b50;
+  --artifact-red-soft: #fff0f2;
+  --artifact-navy: #0a2038;
+  --artifact-on-dark: #f7fbff;
+  --artifact-blue-light: #98caff;
+  --artifact-on-dark-muted: #c7d9ec;
+  --artifact-on-dark-soft: #b5c7da;
+  --artifact-on-dark-subtle: #c5d5e6;
+  --artifact-on-blue: #d7e8fb;
+  --artifact-shadow: 0 18px 50px rgba(21, 49, 82, .11);
+  --artifact-shadow-small: 0 8px 24px rgba(21, 49, 82, .08);
+  --artifact-radius: 24px;
+  --artifact-radius-small: 14px;
+  --artifact-max: 1120px;
+}
+html[data-theme='dark'] {
+  --artifact-bg: #0b1624;
+  --artifact-surface: #122235;
+  --artifact-surface-soft: #1a2c42;
+  --artifact-ink: #f3f7fb;
+  --artifact-muted: #b2c0d0;
+  --artifact-line: #2a3e55;
+  --artifact-blue: #62b0ff;
+  --artifact-blue-strong: #9dceff;
+  --artifact-red: #ff8194;
+  --artifact-red-soft: #3a2028;
+  --artifact-navy: #07111d;
+  --artifact-on-dark: #f7fbff;
+  --artifact-blue-light: #9dceff;
+  --artifact-on-dark-muted: #c7d9ec;
+  --artifact-on-dark-soft: #b5c7da;
+  --artifact-on-dark-subtle: #c5d5e6;
+  --artifact-on-blue: #d7e8fb;
+  --artifact-shadow: 0 18px 50px rgba(0, 0, 0, .28);
+  --artifact-shadow-small: 0 8px 24px rgba(0, 0, 0, .22);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--artifact-bg);
+  color: var(--artifact-ink);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+.container { width: min(var(--artifact-max), calc(100% - 40px)); margin: 0 auto; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+.skip-link { position: absolute; left: -9999px; top: auto; }
+.skip-link:focus { left: 16px; top: 16px; z-index: 20; padding: 10px 14px; border-radius: 10px; background: var(--artifact-navy); color: var(--artifact-on-dark); }
+.site-header { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--artifact-bg) 92%, transparent); backdrop-filter: blur(14px); border-bottom: 1px solid color-mix(in srgb, var(--artifact-line) 70%, transparent); }
+.header-inner { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.brand { display: inline-flex; align-items: center; gap: 12px; font-weight: 800; letter-spacing: -.02em; }
+.brand-mark { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 12px; background: var(--artifact-blue); color: var(--artifact-on-dark); font-size: .84rem; letter-spacing: .08em; }
+.brand-copy small { display: block; color: var(--artifact-muted); font-size: .68rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+.brand-copy strong { display: block; font-size: .96rem; }
+.site-nav { display: flex; align-items: center; gap: 5px; overflow-x: auto; white-space: nowrap; }
+.site-nav a { padding: 10px 12px; color: var(--artifact-muted); font-size: .9rem; font-weight: 700; border-radius: 10px; }
+.site-nav a:hover, .site-nav a[aria-current="page"] { color: var(--artifact-blue); background: var(--artifact-surface-soft); }
+.hero { padding: 92px 0 76px; }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(320px, .82fr); align-items: center; gap: clamp(36px, 6vw, 76px); }
+.eyebrow { display: inline-flex; align-items: center; gap: 9px; color: var(--artifact-blue); font-size: .74rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+.eyebrow::before { content: ""; width: 26px; height: 2px; background: var(--artifact-red); }
+h1, h2, h3 { margin: 0; line-height: 1.08; letter-spacing: -.045em; }
+h1 { max-width: 760px; margin-top: 20px; font-size: clamp(3rem, 6vw, 5.7rem); }
+h2 { font-size: clamp(2rem, 4vw, 3.3rem); }
+h3 { font-size: 1.25rem; }
+.lead { max-width: 650px; margin: 24px 0 0; color: var(--artifact-muted); font-size: clamp(1.05rem, 2vw, 1.22rem); }
+.actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 32px; }
+.button { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 48px; padding: 0 19px; border: 1px solid transparent; border-radius: 999px; font-size: .92rem; font-weight: 800; cursor: pointer; transition: transform .2s ease, background .2s ease, border-color .2s ease; }
+.button:hover { transform: translateY(-2px); }
+.button-primary { background: var(--artifact-blue); color: var(--artifact-on-dark); box-shadow: var(--artifact-shadow-small); }
+.button-primary:hover { background: var(--artifact-blue-strong); }
+.button-secondary { border-color: var(--artifact-line); background: var(--artifact-surface); color: var(--artifact-ink); }
+.button-secondary:hover { border-color: var(--artifact-blue); color: var(--artifact-blue); }
+.button-light { background: var(--artifact-on-dark); color: var(--artifact-navy); }
+.button-light:hover { background: var(--artifact-surface-soft); }
+.hero-note { margin-top: 18px; color: var(--artifact-muted); font-size: .84rem; }
+.hero-visual { min-height: auto; display: block; padding: 12px 8px 12px 0; }
+.hero-orbit { display: none; }
+.hero-panel { position: relative; width: min(430px, 100%); margin: 0 auto; padding: 32px; border-radius: 28px; background: var(--artifact-navy); color: var(--artifact-on-dark); box-shadow: var(--artifact-shadow); }
+.hero-panel .kicker { color: var(--artifact-blue-light); font-size: .72rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
+.hero-panel h2 { max-width: 290px; margin-top: 30px; font-size: clamp(2.15rem, 5vw, 2.75rem); }
+.hero-panel p { color: var(--artifact-on-dark-muted); margin: 22px 0 0; }
+.hero-panel-footer { display: flex; justify-content: space-between; gap: 14px; margin-top: 38px; padding-top: 17px; border-top: 1px solid color-mix(in srgb, var(--artifact-on-dark) 18%, transparent); color: var(--artifact-on-dark-soft); font-size: .78rem; }
+.hero-labels { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; max-width: 430px; margin: 16px auto 0; }
+.floating-label { position: static; display: inline-flex; align-items: center; min-height: 40px; padding: 9px 13px; border: 1px solid var(--artifact-line); border-radius: 14px; background: var(--artifact-surface); box-shadow: var(--artifact-shadow-small); font-size: .78rem; font-weight: 800; }
+.floating-label.one { color: var(--artifact-blue); }
+.floating-label.two { color: var(--artifact-red); }
+.section { padding: 88px 0; }
+.section-tight { padding: 60px 0; }
+.section-header { display: flex; justify-content: space-between; align-items: end; gap: 30px; margin-bottom: 36px; }
+.section-header p { max-width: 520px; margin: 0; color: var(--artifact-muted); }
+.section-kicker { margin-bottom: 13px; color: var(--artifact-red); font-size: .74rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+.pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.pillar, .post-card, .article-shell { border: 1px solid var(--artifact-line); background: var(--artifact-surface); border-radius: var(--artifact-radius); box-shadow: var(--artifact-shadow-small); }
+.pillar { padding: 28px; min-height: 248px; }
+.pillar-number { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 50%; background: var(--artifact-red-soft); color: var(--artifact-red); font-size: .78rem; font-weight: 900; }
+.pillar h3 { margin-top: 34px; }
+.pillar p { color: var(--artifact-muted); margin: 13px 0 0; }
+.band { background: var(--artifact-navy); color: var(--artifact-on-dark); }
+.band .section-kicker { color: var(--artifact-blue-light); }
+.band p { color: var(--artifact-on-dark-subtle); }
+.method-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 68px; align-items: start; }
+.method-list { display: grid; gap: 0; }
+.method-item { display: grid; grid-template-columns: 54px 1fr; gap: 20px; padding: 24px 0; border-top: 1px solid color-mix(in srgb, var(--artifact-on-dark) 20%, transparent); }
+.method-item:last-child { border-bottom: 1px solid color-mix(in srgb, var(--artifact-on-dark) 20%, transparent); }
+.method-index { color: var(--artifact-blue-light); font-size: .86rem; font-weight: 900; letter-spacing: .1em; }
+.method-item h3 { font-size: 1.08rem; }
+.method-item p { margin: 7px 0 0; font-size: .94rem; }
+.about-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 70px; align-items: center; }
+.profile-card { padding: 34px; border-radius: 28px; background: var(--artifact-surface-soft); }
+.initials { display: grid; place-items: center; width: 100px; height: 100px; border-radius: 28px; background: var(--artifact-blue); color: var(--artifact-on-dark); font-size: 2.2rem; font-weight: 900; letter-spacing: -.07em; }
+.profile-card h3 { margin-top: 25px; }
+.profile-card p { color: var(--artifact-muted); }
+.proof-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 30px; }
+.proof { padding: 16px; border-top: 2px solid var(--artifact-blue); background: var(--artifact-surface); }
+.proof strong { display: block; font-size: 1.7rem; letter-spacing: -.04em; }
+.proof span { color: var(--artifact-muted); font-size: .78rem; }
+.blog-preview { background: var(--artifact-surface-soft); }
+.posts-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.post-card { overflow: hidden; transition: transform .2s ease, box-shadow .2s ease; }
+.post-card:hover { transform: translateY(-4px); box-shadow: var(--artifact-shadow); }
+.post-cover { min-height: 120px; padding: 20px; display: flex; align-items: flex-end; background: linear-gradient(135deg, var(--artifact-blue), var(--artifact-navy)); color: var(--artifact-on-dark); }
+.post-cover span { font-size: .72rem; font-weight: 900; letter-spacing: .13em; text-transform: uppercase; }
+.post-content { padding: 23px; }
+.post-meta { display: flex; flex-wrap: wrap; gap: 8px; color: var(--artifact-muted); font-size: .76rem; font-weight: 700; }
+.post-content h3 { margin-top: 13px; font-size: 1.18rem; }
+.post-content p { margin: 12px 0 0; color: var(--artifact-muted); font-size: .92rem; }
+.read-more { display: inline-flex; margin-top: 19px; color: var(--artifact-blue); font-size: .84rem; font-weight: 900; }
+.empty-state { grid-column: 1 / -1; padding: 30px; border: 1px dashed var(--artifact-line); border-radius: var(--artifact-radius); color: var(--artifact-muted); text-align: center; }
+.cta-box { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 28px; padding: 48px; border-radius: 30px; background: var(--artifact-blue); color: var(--artifact-on-dark); }
+.cta-box p { max-width: 580px; margin: 14px 0 0; color: var(--artifact-on-blue); }
+.site-footer { padding: 28px 0 38px; border-top: 1px solid var(--artifact-line); color: var(--artifact-muted); font-size: .86rem; }
+.footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.footer-links { display: flex; flex-wrap: wrap; gap: 16px; }
+.footer-links a:hover { color: var(--artifact-blue); }
+.page-hero { padding: 76px 0 48px; }
+.page-hero h1 { max-width: 780px; font-size: clamp(2.6rem, 6vw, 5rem); }
+.page-hero .lead { max-width: 680px; }
+.blog-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-bottom: 28px; }
+.search-input, .select-input { min-height: 46px; padding: 0 14px; border: 1px solid var(--artifact-line); border-radius: 12px; background: var(--artifact-surface); color: var(--artifact-ink); font: inherit; }
+.search-input { flex: 1 1 260px; }
+.select-input { min-width: 180px; }
+.search-input:focus, .select-input:focus, a:focus-visible, button:focus-visible { outline: 3px solid color-mix(in srgb, var(--artifact-blue) 35%, transparent); outline-offset: 3px; }
+.article-shell { max-width: 850px; margin: 30px auto 88px; padding: clamp(26px, 5vw, 64px); }
+.article-header { padding-bottom: 30px; border-bottom: 1px solid var(--artifact-line); }
+.article-header h1 { max-width: none; margin-top: 16px; font-size: clamp(2.3rem, 5vw, 4.4rem); }
+.article-content { padding-top: 32px; color: var(--artifact-ink); font-size: 1.08rem; }
+.article-content h2 { margin: 40px 0 14px; font-size: 1.85rem; }
+.article-content h3 { margin: 30px 0 10px; font-size: 1.35rem; }
+.article-content p { margin: 0 0 20px; }
+.article-content ul { margin: 0 0 22px; padding-left: 24px; }
+.article-content li { margin: 8px 0; }
+.article-content blockquote { margin: 28px 0; padding: 20px 24px; border-radius: 14px; background: var(--artifact-surface-soft); color: var(--artifact-blue-strong); font-size: 1.2rem; font-weight: 800; }
+.back-link { display: inline-flex; margin-bottom: 22px; color: var(--artifact-blue); font-size: .88rem; font-weight: 900; }
+.related { margin: 0 auto 88px; }
+.related h2 { font-size: 2rem; margin-bottom: 24px; }
+@media (max-width: 880px) {
+  .hero-grid, .method-grid, .about-grid { grid-template-columns: 1fr; gap: 42px; }
+  .hero { padding-top: 62px; }
+  .hero-visual { padding-right: 0; }
+  .posts-grid, .pillars { grid-template-columns: 1fr; }
+  .section-header { display: block; }
+  .section-header p { margin-top: 16px; }
+  .cta-box { grid-template-columns: 1fr; padding: 34px; }
+}
+@media (max-width: 620px) {
+  .container { width: min(var(--artifact-max), calc(100% - 28px)); }
+  .header-inner { align-items: flex-start; flex-direction: column; padding: 14px 0; gap: 10px; }
+  .site-nav { width: 100%; }
+  .site-nav a { padding: 8px 9px; font-size: .82rem; }
+  .hero { padding: 48px 0 58px; }
+  h1 { font-size: clamp(2.7rem, 14vw, 4.2rem); }
+  .hero-panel { padding: 25px; }
+  .section { padding: 62px 0; }
+  .proof-grid { grid-template-columns: 1fr; }
+  .footer-inner { align-items: flex-start; flex-direction: column; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+}
+@media print {
+  @page { size: auto !important; }
+  body { margin: 0; padding: .4in .6in; background: var(--artifact-surface); print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  .container, main { max-width: 100% !important; width: 100% !important; }
+  .site-header, .site-footer, .actions, .button, .blog-tools, .back-link { display: none !important; }
+  section, .page-hero, .article-shell { break-inside: avoid; margin-bottom: 20px !important; }
+  .pillar, .post-card, .article-shell, .profile-card, .cta-box { break-inside: avoid; box-shadow: none !important; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+</style>
+</head><body>
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html" aria-label="Patrik Darlan Ribeiro — início">
+      <span class="brand-mark" aria-hidden="true">PDR</span>
+      <span class="brand-copy"><small>Estratégia · Educação · Prática</small><strong>Patrik Darlan Ribeiro</strong></span>
+    </a>
+    <nav class="site-nav" aria-label="Navegação principal">
+      <a href="index.html" aria-current="page">Início</a>
+      <a href="index.html#atuacao">Atuação</a>
+      <a href="index.html#metodo">Método</a>
+      <a href="index.html#sobre">Sobre</a>
+      <a href="blog.html" >Blog</a>
+      <a href="index.html#contato">Contato</a>
+    </nav>
+  </div>
+</header>
+<main id="conteudo">
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow">Conhecimento aplicado</span>
+        <h1>Estratégia para conectar decisão, operação e desenvolvimento.</h1>
+        <p class="lead">Consultoria, docência e conteúdo para transformar problemas complexos em caminhos claros — com rigor, proximidade e foco no que precisa acontecer na prática.</p>
+        <div class="actions">
+          <a class="button button-primary" href="https://wa.me/5511978757549" target="_blank" rel="noopener">Conversar sobre um projeto <span aria-hidden="true">↗</span></a>
+          <a class="button button-secondary" href="#metodo">Conheça o método</a>
+        </div>
+        <p class="hero-note">Uma presença profissional para quem busca clareza, repertório e execução.</p>
+      </div>
+      <div class="hero-visual" aria-label="Resumo do posicionamento profissional">
+        <div class="hero-panel">
+          <span class="kicker">Ponto de vista</span>
+          <h2>Menos ruído. Mais direção.</h2>
+          <p>O trabalho começa entendendo o contexto e termina criando movimento: uma decisão mais clara, uma aula mais relevante ou uma operação mais consistente.</p>
+          <div class="hero-panel-footer"><span>Consultoria</span><span>Docência</span><span>Conteúdo</span></div>
+        </div>
+        <div class="hero-labels" aria-label="Princípios de atuação">
+          <span class="floating-label one">Decisão com contexto</span>
+          <span class="floating-label two">Prática com propósito</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="atuacao">
+    <div class="container">
+      <div class="section-header">
+        <div><div class="section-kicker">Onde eu atuo</div><h2>Três frentes, uma mesma intenção.</h2></div>
+        <p>Construir pontes entre a visão estratégica, o desenvolvimento de pessoas e a realidade de quem precisa fazer acontecer.</p>
+      </div>
+      <div class="pillars">
+        <article class="pillar"><span class="pillar-number">01</span><h3>Consultoria</h3><p>Diagnóstico, estruturação e direcionamento para decisões mais consistentes em vendas, pós-vendas, serviços e operações.</p></article>
+        <article class="pillar"><span class="pillar-number">02</span><h3>Docência</h3><p>Aulas e experiências de aprendizagem que aproximam teoria, mercado e os desafios que formam profissionais melhores.</p></article>
+        <article class="pillar"><span class="pillar-number">03</span><h3>Conteúdo</h3><p>Artigos, conversas e materiais para organizar ideias, provocar reflexão e tornar o conhecimento mais acionável.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section band" id="metodo">
+    <div class="container method-grid">
+      <div><div class="section-kicker">Como trabalho</div><h2>Clareza antes da pressa.</h2><p class="lead">Cada projeto parte do contexto real, encontra os pontos de alavancagem e traduz a estratégia em próximos passos possíveis.</p></div>
+      <div class="method-list">
+        <div class="method-item"><span class="method-index">01</span><div><h3>Escutar o contexto</h3><p>Entender objetivos, restrições, pessoas envolvidas e o que já foi tentado.</p></div></div>
+        <div class="method-item"><span class="method-index">02</span><div><h3>Organizar o problema</h3><p>Separar sintomas de causas e transformar complexidade em critérios de decisão.</p></div></div>
+        <div class="method-item"><span class="method-index">03</span><div><h3>Construir o caminho</h3><p>Definir prioridades, linguagem e rotinas que permitam colocar a ideia em movimento.</p></div></div>
+        <div class="method-item"><span class="method-index">04</span><div><h3>Acompanhar a prática</h3><p>Aprender com os sinais do caminho e ajustar o que for necessário para sustentar o resultado.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="sobre">
+    <div class="container about-grid">
+      <div class="profile-card"><div class="initials" aria-hidden="true">PR</div><h3>Patrik Darlan Ribeiro</h3><p>Consultor, professor e pesquisador. Uma atuação que combina experiência executiva, formação acadêmica e comunicação prática.</p><div class="proof-grid"><div class="proof"><strong>3</strong><span>frentes de atuação</span></div><div class="proof"><strong>1</strong><span>linguagem: prática</span></div><div class="proof"><strong>∞</strong><span>curiosidade aplicada</span></div></div></div>
+      <div><div class="section-kicker">Sobre a presença</div><h2>Repertório para pensar. Proximidade para fazer.</h2><p class="lead">A experiência em operações, serviços, vendas e educação alimenta uma abordagem que não separa conhecimento de realidade. O objetivo é criar compreensão suficiente para que boas decisões deixem de ser apenas boas ideias.</p><div class="actions"><a class="button button-secondary" href="blog.html">Ler artigos no blog <span aria-hidden="true">→</span></a></div></div>
+    </div>
+  </section>
+
+  <section class="section blog-preview" id="blog">
+    <div class="container">
+      <div class="section-header"><div><div class="section-kicker">Blog</div><h2>Ideias para levar para a prática.</h2></div><p>Reflexões sobre estratégia, gestão, educação e o trabalho de transformar intenção em rotina.</p></div>
+      <div class="posts-grid" id="featured-posts" aria-live="polite"></div>
+      <div class="actions"><a class="button button-secondary" href="blog.html">Ver todos os artigos</a></div>
+    </div>
+  </section>
+
+  <section class="section" id="contato">
+    <div class="container"><div class="cta-box"><div><div class="section-kicker">Vamos conversar</div><h2>Uma boa conversa pode ser o primeiro passo.</h2><p>Se existe um desafio, uma aula, um projeto ou uma ideia que precisa ganhar forma, entre em contato.</p></div><div class="actions"><a class="button button-light" href="#contato" data-contact="cGF0cmlrYWRtQGhvdG1haWwuY29t">E-mail de contato <span aria-hidden="true">↗</span></a><a class="button button-secondary" href="https://wa.me/5511978757549" target="_blank" rel="noopener">WhatsApp</a></div></div></div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <span>© 2026 Patrik Darlan Ribeiro. Conhecimento que vira prática.</span>
+    <div class="footer-links">
+      <a href="https://www.instagram.com/patrikdarlan/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://wa.me/5511978757549" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="#contato" data-contact="cGF0cmlrYWRtQGhvdG1haWwuY29t">E-mail de contato</a>
+    </div>
+  </div>
+</footer>
+<script src="posts.js"></script>
+<script>
+(function () {
+  var target = document.getElementById('featured-posts');
+  if (!target || !window.BLOG_POSTS) return;
+  var posts = window.BLOG_POSTS.filter(function (post) { return post.published !== false; }).slice(0, 3);
+  target.innerHTML = posts.map(function (post) {
+    return '<article class="post-card"><div class="post-cover"><span>' + post.category + '</span></div><div class="post-content"><div class="post-meta"><span>' + post.dateLabel + '</span><span>·</span><span>' + post.readingTime + '</span></div><h3>' + post.title + '</h3><p>' + post.excerpt + '</p><a class="read-more" href="post.html?slug=' + encodeURIComponent(post.slug) + '">Ler artigo <span aria-hidden="true">→</span></a></div></article>';
+  }).join('');
+})();
+</script>
+
+<script>
+(function () {
+  document.querySelectorAll('[data-contact]').forEach(function (link) {
+    link.addEventListener('click', function (event) {
+      event.preventDefault();
+      var email = atob(link.getAttribute('data-contact'));
+      window.location.href = 'mailto:' + email;
+    });
+  });
+  if (window.GleanBridge) {
+    window.GleanBridge.postMessage({ actionId: 'export-pdf', type: 'glean-add-menu', metadata: { label: 'Export as PDF', icon: 'export' } });
+    window.GleanBridge.onMessage('action', function (data) { if (data.actionId === 'export-pdf') window.print(); });
+  }
+})();
+</script>
+</body></html>
